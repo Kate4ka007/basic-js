@@ -15,6 +15,7 @@ const { NotImplementedError } = require("../extensions/index.js");
  * => 'STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS'
  *
  */
+
 function repeater(str, options) {
   let value = Object.values(options);
   let len = value.length;
