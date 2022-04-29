@@ -17,7 +17,7 @@ const { NotImplementedError } = require('../extensions/index.js');
 function transform(arr) {
   let newArr = [];
   if (typeof arr !== 'object') {
-    throw new NotImplementedError(`'arr' parameter must be an instance of the Array!`)
+    throw new Error(`'arr' parameter must be an instance of the Array!`)
   }
   if(arr == 3 ||
     arr == 3.312312  ||
