@@ -25,19 +25,18 @@ class VigenereCipheringMachine {
   }
 
   encrypt(message, key) {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";                   ///'XVPNECTXKTFU'
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
     message = message.toUpperCase();
-    key = key.toUpperCase();
-    let count;
+    key = key.toUpperCase();    
     let ind_key = 0;
     if (
       arguments.length < 2 ||
       arguments[0] == undefined ||
-      arguments[0] == null
+      arguments[0] == null 
+       
     ) {
-      throw new NotImplementedError(`Incorrect arguments!`);
+      throw new Error('Incorrect arguments!');
     }
-    //let maxlength = Math.max(message.length, key.length);
     let str = "";
     for (let i = 0; i < message.length; i++) {
       if (/\d/.test(message[i]) == true) {
@@ -61,21 +60,18 @@ class VigenereCipheringMachine {
   }
 
   decrypt(message, key) {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";                   ///'XVPNECTXKTFU'
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; ///'XVPNECTXKTFU'
     message = message.toUpperCase();
     key = key.toUpperCase();
-    
     let ind_key = 0;
     if (
       arguments.length < 2 ||
       arguments[0] == undefined ||
-      arguments[0] == null
+      arguments[0] == null 
+      
     ) {
-     
-      throw new NotImplementedError(`Incorrect arguments!`);
-     
-    }
-    //let maxlength = Math.max(message.length, key.length);
+      throw new Error('Incorrect arguments!');
+    } 
     let str = "";
     for (let i = 0; i < message.length; i++) {
       if (/\d/.test(message[i]) == true) {
@@ -84,11 +80,11 @@ class VigenereCipheringMachine {
         let numInd =
           alphabet.indexOf(message[i]) - alphabet.indexOf(key[ind_key]);
         ind_key++;
-        if (ind_key >  key.length - 1) {
+        if (ind_key > key.length - 1) {
           ind_key = 0;
         }
         if (numInd < 0) {
-          numInd = alphabet.length + (numInd);
+          numInd = alphabet.length + numInd;
         }
         str += alphabet.charAt(numInd);
       } else if (/\W/.test(message[i]) == true) {
@@ -96,11 +92,6 @@ class VigenereCipheringMachine {
       }
     }
     return str;
-
-
-
-
-
   }
 }
 
@@ -109,4 +100,4 @@ module.exports = {
 };
 
 /* const directMachine = new VigenereCipheringMachine();
-directMachine.decrypt('UWJJW XAGWLNFM VNNNDXHVWWL :)', 'js') */
+directMachine.encrypt('alphonse')  */
