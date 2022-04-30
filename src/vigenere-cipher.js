@@ -32,8 +32,7 @@ class VigenereCipheringMachine {
     if (
       arguments.length < 2 ||
       arguments[0] == undefined ||
-      arguments[0] == null 
-       
+      arguments[0] == null        
     ) {
       throw new Error('Incorrect arguments!');
     }
@@ -55,6 +54,9 @@ class VigenereCipheringMachine {
       } else if (/\W/.test(message[i]) == true) {
         str += message[i];
       }
+    }
+    if(this.bool == false) {
+      return str.split('').reverse().join('')
     }
     return str;
   }
@@ -91,6 +93,9 @@ class VigenereCipheringMachine {
         str += message[i];
       }
     }
+    if(this.bool == false) {
+      return str.split('').reverse().join('')
+    }
     return str;
   }
 }
@@ -98,6 +103,10 @@ class VigenereCipheringMachine {
 module.exports = {
   VigenereCipheringMachine,
 };
+
+
+/* const reverseMachine = new VigenereCipheringMachine(false);
+reverseMachine.encrypt('attack at dawn!', 'alphonse') */
 
 /* const directMachine = new VigenereCipheringMachine();
 directMachine.encrypt('alphonse')  */
