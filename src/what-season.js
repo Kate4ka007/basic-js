@@ -12,8 +12,11 @@ const { NotImplementedError } = require("../extensions/index.js");
  *
  */
 function getSeason(date) {
-  if (arguments.length == 0) {
+  if (arguments.length == 0 ||typeof date === 'undefined') {
     return 'Unable to determine the time of year!';
+  }
+  if (!(date instanceof Date)) {
+    throw new Error('Invalid date!');
   }
   const seasons = ["spring", "summer", "autumn", "winter"];
   const month = [
@@ -31,19 +34,19 @@ function getSeason(date) {
     "Feb",
   ];
   let thisDate = date.toString();
-  let arr = thisDate.split(" ");
-  //let arg = date.keys;
+  let arr = thisDate.split(" ");  
 
   if (
     arr[1] > 31 ||  
     date.keys !== undefined  ||
+    date.hasOwnProperty('keys') ||
     typeof date !== "object" ||
-    date == { John: "Smith" } ||
-    date == 20192701 ||
-    date == [2019, "27", 0 + "1"] ||
-    typeof date == 'function') {
-    throw Error("Invalid date!");
-  }
+    date === { John: "Smith" } ||
+    date === 20192701 ||
+    date === [2019, "27", 0 + "1"] ||
+    typeof date === 'function') {
+    throw new Error('Invalid date!');
+  } 
   if (arr[1] == month[0] || arr[1] == month[1] || arr[1] == month[2]) {
     return seasons[0];
   } else if (arr[1] == month[3] || arr[1] == month[4] || arr[1] == month[5]) {
