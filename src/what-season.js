@@ -42,7 +42,7 @@ function getSeason(date) {
     date == 20192701 ||
     date == [2019, "27", 0 + "1"] ||
     typeof date == 'function') {
-    throw new  Error("Invalid date!");
+    throw Error("Invalid date!");
   }
   if (arr[1] == month[0] || arr[1] == month[1] || arr[1] == month[2]) {
     return seasons[0];

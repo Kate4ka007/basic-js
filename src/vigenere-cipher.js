@@ -25,17 +25,14 @@ class VigenereCipheringMachine {
   }
 
   encrypt(message, key) {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
-    message = message.toUpperCase();
-    key = key.toUpperCase();    
-    let ind_key = 0;
-    if (
-      arguments.length < 2 ||
-      arguments[0] == undefined ||
-      arguments[0] == null        
-    ) {
-      throw new Error('Incorrect arguments!');
+    if (message === undefined || key === undefined) {
+      throw new Error("Incorrect arguments!");
     }
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    message = message.toUpperCase();
+    key = key.toUpperCase();
+    let ind_key = 0;
+
     let str = "";
     for (let i = 0; i < message.length; i++) {
       if (/\d/.test(message[i]) == true) {
@@ -55,25 +52,21 @@ class VigenereCipheringMachine {
         str += message[i];
       }
     }
-    if(this.bool == false) {
-      return str.split('').reverse().join('')
+    if (this.bool == false) {
+      return str.split("").reverse().join("");
     }
     return str;
   }
 
   decrypt(message, key) {
+    if (message === undefined || key === undefined) {
+      throw new Error("Incorrect arguments!");
+    }
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; ///'XVPNECTXKTFU'
     message = message.toUpperCase();
     key = key.toUpperCase();
     let ind_key = 0;
-    if (
-      arguments.length < 2 ||
-      arguments[0] == undefined ||
-      arguments[0] == null 
-      
-    ) {
-      throw new Error('Incorrect arguments!');
-    } 
+
     let str = "";
     for (let i = 0; i < message.length; i++) {
       if (/\d/.test(message[i]) == true) {
@@ -93,8 +86,8 @@ class VigenereCipheringMachine {
         str += message[i];
       }
     }
-    if(this.bool == false) {
-      return str.split('').reverse().join('')
+    if (this.bool == false) {
+      return str.split("").reverse().join("");
     }
     return str;
   }
@@ -103,7 +96,6 @@ class VigenereCipheringMachine {
 module.exports = {
   VigenereCipheringMachine,
 };
-
 
 /* const reverseMachine = new VigenereCipheringMachine(false);
 reverseMachine.encrypt('attack at dawn!', 'alphonse') */

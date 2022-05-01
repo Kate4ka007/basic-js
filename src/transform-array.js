@@ -14,19 +14,20 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
  transform([1, 2, 3, '--double-next', 1337, '--discard-prev', 4, 5])
 
-function transform(arr) {
-  let newArr = [];
-  if (typeof arr !== 'object') {
-    throw new Error(`'arr' parameter must be an instance of the Array!`)
-  }
+function transform(arr) { 
+/*   if (typeof arr !== 'object') {
+    throw new Error('\'arr\' parameter must be an instance of the Array!')
+  } */
   if(arr == 3 ||
+    arr === [] ||
     arr == 3.312312  ||
-    arr == false ||
-    arr == null ||
-    arr == undefined ||
-    arr == { 'foo': 'bar' }) {
-      throw new NotImplementedError(`'arr' parameter must be an instance of the Array!`)
+    arr === false ||
+    arr === null ||
+    arr === undefined ||    
+    arr === { 'foo': 'bar' }) {
+      throw new Error('\'arr\' parameter must be an instance of the Array!')
     }
+    let newArr = [];
   for(let i = 0; i < arr.length; i++) {
     if(arr[i] == '--discard-next') {
       i = i + 2
