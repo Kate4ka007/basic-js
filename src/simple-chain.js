@@ -17,11 +17,14 @@ const chainMaker = {
     return this;
   },
   removeLink(position) {
-    if (position > this.length || position < -1 || typeof position == NaN) {
+    if (
+      position > this.chain.length ||
+      position < 1 ||
+      typeof position !== 'number') {
       this.chain = [];      
-      throw new NotImplementedError(`You can't remove incorrect link!`);
+      throw new Error('You can\'t remove incorrect link!');
     } else {
-    this.chain.splice(position - 1);   
+    this.chain.splice(position - 1, 1);   
   }
     return this;  
   },
@@ -38,4 +41,4 @@ module.exports = {
   chainMaker,
 };
 
-chainMaker.addLink('8.963').reverseChain().reverseChain().reverseChain().reverseChain().addLink({ 0: 'first', 1: 'second', 'length': 2 }).reverseChain().addLink(3.14).addLink('DEF').reverseChain().finishChain()
+//chainMaker.addLink('8.963').reverseChain().reverseChain().reverseChain().reverseChain().addLink({ 0: 'first', 1: 'second', 'length': 2 }).reverseChain().addLink(3.14).addLink('DEF').reverseChain().finishChain()
